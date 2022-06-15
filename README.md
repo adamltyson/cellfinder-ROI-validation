@@ -16,7 +16,7 @@ To run the software, you need to provide:
 * The path to the raw data to be visualised (e.g. `/data/ch2`)
 * The path to the cellfinder output directory (e.g. `analysis/cellfinder_output`)
 * The acronym of the region to be analysed (e.g. `VISp`)
-* 
+
 ```bash
 python cellfinder-ROI-validation/main.py /data/ch2 analysis/cellfinder_output VISp
 ```
