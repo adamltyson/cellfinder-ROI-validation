@@ -1,10 +1,10 @@
 import sys
+from pathlib import Path
+
 import napari
 import numpy as np
-
-from pathlib import Path
-from skimage.measure import regionprops
 from brainglobe_napari_io.cellfinder.reader_dir import reader_function
+from skimage.measure import regionprops
 
 image_path = Path(sys.argv[1])
 cellfinder_output = Path(sys.argv[2])
@@ -20,6 +20,9 @@ descendants = atlas.get_structure_descendants(region)
 
 mask_stack = np.zeros_like(registered_atlas_stack)
 bounding_box_stack = np.zeros_like(registered_atlas_stack)
+
+structure_id = atlas.structures[region]["id"]
+mask_stack[registered_atlas_stack == structure_id] = 1
 
 for descendant in descendants:
     descendant_id = atlas.structures[descendant]["id"]
